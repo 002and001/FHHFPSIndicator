@@ -1,0 +1,2 @@
+# FHHFPSIndicator
+show fps 
