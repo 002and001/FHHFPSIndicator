@@ -1,0 +1,368 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		25C90C9C1D227566002F1B5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C90C9B1D227566002F1B5E /* main.m */; };
+		25C90CA71D227566002F1B5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25C90CA61D227566002F1B5E /* Assets.xcassets */; };
+		25C90CAA1D227566002F1B5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C90CA81D227566002F1B5E /* LaunchScreen.storyboard */; };
+		25C90CBC1D22762D002F1B5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C90CB31D22762D002F1B5E /* AppDelegate.m */; };
+		25C90CBD1D22762D002F1B5E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C90CB51D22762D002F1B5E /* HomeViewController.m */; };
+		25C90CBE1D22762D002F1B5E /* LastHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C90CB71D22762D002F1B5E /* LastHomeViewController.m */; };
+		25C90CBF1D22762D002F1B5E /* SubHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C90CB91D22762D002F1B5E /* SubHomeViewController.m */; };
+		25C90CC01D22762D002F1B5E /* WildernessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C90CBB1D22762D002F1B5E /* WildernessViewController.m */; };
+		25C90CC61D227636002F1B5E /* UIView+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C90CC31D227636002F1B5E /* UIView+Extention.m */; };
+		25C90CC71D227636002F1B5E /* UIViewController+CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C90CC51D227636002F1B5E /* UIViewController+CustomNavigationBar.m */; };
+		25C90CCD1D2276AB002F1B5E /* FHHFPSIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C90CCA1D2276AB002F1B5E /* FHHFPSIndicator.m */; };
+		25C90CCE1D2276AB002F1B5E /* UIWindow+FHH.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C90CCC1D2276AB002F1B5E /* UIWindow+FHH.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		25C90C971D227566002F1B5E /* FHHFPSIndicatorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHHFPSIndicatorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25C90C9B1D227566002F1B5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		25C90CA61D227566002F1B5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		25C90CA91D227566002F1B5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		25C90CAB1D227566002F1B5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25C90CB21D22762D002F1B5E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		25C90CB31D22762D002F1B5E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		25C90CB41D22762D002F1B5E /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		25C90CB51D22762D002F1B5E /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		25C90CB61D22762D002F1B5E /* LastHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastHomeViewController.h; sourceTree = "<group>"; };
+		25C90CB71D22762D002F1B5E /* LastHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastHomeViewController.m; sourceTree = "<group>"; };
+		25C90CB81D22762D002F1B5E /* SubHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubHomeViewController.h; sourceTree = "<group>"; };
+		25C90CB91D22762D002F1B5E /* SubHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubHomeViewController.m; sourceTree = "<group>"; };
+		25C90CBA1D22762D002F1B5E /* WildernessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildernessViewController.h; sourceTree = "<group>"; };
+		25C90CBB1D22762D002F1B5E /* WildernessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildernessViewController.m; sourceTree = "<group>"; };
+		25C90CC21D227636002F1B5E /* UIView+Extention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extention.h"; sourceTree = "<group>"; };
+		25C90CC31D227636002F1B5E /* UIView+Extention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extention.m"; sourceTree = "<group>"; };
+		25C90CC41D227636002F1B5E /* UIViewController+CustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CustomNavigationBar.h"; sourceTree = "<group>"; };
+		25C90CC51D227636002F1B5E /* UIViewController+CustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CustomNavigationBar.m"; sourceTree = "<group>"; };
+		25C90CC91D2276AB002F1B5E /* FHHFPSIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHHFPSIndicator.h; sourceTree = "<group>"; };
+		25C90CCA1D2276AB002F1B5E /* FHHFPSIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHHFPSIndicator.m; sourceTree = "<group>"; };
+		25C90CCB1D2276AB002F1B5E /* UIWindow+FHH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+FHH.h"; sourceTree = "<group>"; };
+		25C90CCC1D2276AB002F1B5E /* UIWindow+FHH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+FHH.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		25C90C941D227566002F1B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		25C90C8E1D227566002F1B5E = {
+			isa = PBXGroup;
+			children = (
+				25C90C991D227566002F1B5E /* FHHFPSIndicatorDemo */,
+				25C90C981D227566002F1B5E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		25C90C981D227566002F1B5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25C90C971D227566002F1B5E /* FHHFPSIndicatorDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		25C90C991D227566002F1B5E /* FHHFPSIndicatorDemo */ = {
+			isa = PBXGroup;
+			children = (
+				25C90CC81D2276AB002F1B5E /* FHHFPSIndicator */,
+				25C90CC11D227636002F1B5E /* Utility */,
+				25C90CB11D22762D002F1B5E /* Classes */,
+				25C90CA61D227566002F1B5E /* Assets.xcassets */,
+				25C90CA81D227566002F1B5E /* LaunchScreen.storyboard */,
+				25C90CAB1D227566002F1B5E /* Info.plist */,
+				25C90C9A1D227566002F1B5E /* Supporting Files */,
+			);
+			path = FHHFPSIndicatorDemo;
+			sourceTree = "<group>";
+		};
+		25C90C9A1D227566002F1B5E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				25C90C9B1D227566002F1B5E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		25C90CB11D22762D002F1B5E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				25C90CB21D22762D002F1B5E /* AppDelegate.h */,
+				25C90CB31D22762D002F1B5E /* AppDelegate.m */,
+				25C90CB41D22762D002F1B5E /* HomeViewController.h */,
+				25C90CB51D22762D002F1B5E /* HomeViewController.m */,
+				25C90CB61D22762D002F1B5E /* LastHomeViewController.h */,
+				25C90CB71D22762D002F1B5E /* LastHomeViewController.m */,
+				25C90CB81D22762D002F1B5E /* SubHomeViewController.h */,
+				25C90CB91D22762D002F1B5E /* SubHomeViewController.m */,
+				25C90CBA1D22762D002F1B5E /* WildernessViewController.h */,
+				25C90CBB1D22762D002F1B5E /* WildernessViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		25C90CC11D227636002F1B5E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				25C90CC21D227636002F1B5E /* UIView+Extention.h */,
+				25C90CC31D227636002F1B5E /* UIView+Extention.m */,
+				25C90CC41D227636002F1B5E /* UIViewController+CustomNavigationBar.h */,
+				25C90CC51D227636002F1B5E /* UIViewController+CustomNavigationBar.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		25C90CC81D2276AB002F1B5E /* FHHFPSIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				25C90CC91D2276AB002F1B5E /* FHHFPSIndicator.h */,
+				25C90CCA1D2276AB002F1B5E /* FHHFPSIndicator.m */,
+				25C90CCB1D2276AB002F1B5E /* UIWindow+FHH.h */,
+				25C90CCC1D2276AB002F1B5E /* UIWindow+FHH.m */,
+			);
+			path = FHHFPSIndicator;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		25C90C961D227566002F1B5E /* FHHFPSIndicatorDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25C90CAE1D227566002F1B5E /* Build configuration list for PBXNativeTarget "FHHFPSIndicatorDemo" */;
+			buildPhases = (
+				25C90C931D227566002F1B5E /* Sources */,
+				25C90C941D227566002F1B5E /* Frameworks */,
+				25C90C951D227566002F1B5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FHHFPSIndicatorDemo;
+			productName = FHHFPSIndicatorDemo;
+			productReference = 25C90C971D227566002F1B5E /* FHHFPSIndicatorDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		25C90C8F1D227566002F1B5E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = 002;
+				TargetAttributes = {
+					25C90C961D227566002F1B5E = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 25C90C921D227566002F1B5E /* Build configuration list for PBXProject "FHHFPSIndicatorDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 25C90C8E1D227566002F1B5E;
+			productRefGroup = 25C90C981D227566002F1B5E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				25C90C961D227566002F1B5E /* FHHFPSIndicatorDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		25C90C951D227566002F1B5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25C90CAA1D227566002F1B5E /* LaunchScreen.storyboard in Resources */,
+				25C90CA71D227566002F1B5E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		25C90C931D227566002F1B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25C90CC01D22762D002F1B5E /* WildernessViewController.m in Sources */,
+				25C90CC71D227636002F1B5E /* UIViewController+CustomNavigationBar.m in Sources */,
+				25C90CCE1D2276AB002F1B5E /* UIWindow+FHH.m in Sources */,
+				25C90CBC1D22762D002F1B5E /* AppDelegate.m in Sources */,
+				25C90CC61D227636002F1B5E /* UIView+Extention.m in Sources */,
+				25C90CBF1D22762D002F1B5E /* SubHomeViewController.m in Sources */,
+				25C90C9C1D227566002F1B5E /* main.m in Sources */,
+				25C90CBD1D22762D002F1B5E /* HomeViewController.m in Sources */,
+				25C90CCD1D2276AB002F1B5E /* FHHFPSIndicator.m in Sources */,
+				25C90CBE1D22762D002F1B5E /* LastHomeViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		25C90CA81D227566002F1B5E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25C90CA91D227566002F1B5E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		25C90CAC1D227566002F1B5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		25C90CAD1D227566002F1B5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		25C90CAF1D227566002F1B5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FHHFPSIndicatorDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fhhe.FHHFPSIndicatorDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "21ab5b6e-3985-4566-9933-d7c4ba336123";
+			};
+			name = Debug;
+		};
+		25C90CB01D227566002F1B5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FHHFPSIndicatorDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fhhe.FHHFPSIndicatorDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "21ab5b6e-3985-4566-9933-d7c4ba336123";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		25C90C921D227566002F1B5E /* Build configuration list for PBXProject "FHHFPSIndicatorDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25C90CAC1D227566002F1B5E /* Debug */,
+				25C90CAD1D227566002F1B5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25C90CAE1D227566002F1B5E /* Build configuration list for PBXNativeTarget "FHHFPSIndicatorDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25C90CAF1D227566002F1B5E /* Debug */,
+				25C90CB01D227566002F1B5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 25C90C8F1D227566002F1B5E /* Project object */;
+}
