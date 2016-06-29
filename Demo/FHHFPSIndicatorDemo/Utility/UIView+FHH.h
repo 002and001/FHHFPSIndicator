@@ -1,5 +1,5 @@
 //
-//  UIView+Ex.h
+//  UIView+FHH.h
 //  
 //
 //  Created by 002 on 15/10/1.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (Extention)
+@interface UIView (FHH)
 
 @property(nonatomic,assign) CGFloat x;
 @property(nonatomic,assign) CGFloat y;

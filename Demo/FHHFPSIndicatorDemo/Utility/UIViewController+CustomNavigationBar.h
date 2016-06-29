@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface UIViewController (CustomNavigationBar)
 
 @property(nonatomic,strong) UIView *navigationBar;  // 自定义navigationBar

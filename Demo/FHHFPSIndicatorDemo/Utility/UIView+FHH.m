@@ -1,14 +1,14 @@
 //
-//  UIView+Ex.m
+//  UIView+FHH.m
 //  
 //
 //  Created by 002 on 15/10/1.
 //  Copyright (c) 2015年 002. All rights reserved.
 //
 
-#import "UIView+Extention.h"
+#import "UIView+FHH.h"
 
-@implementation UIView (Extention)
+@implementation UIView (FHH)
 
 - (void)setX:(CGFloat)x
 {

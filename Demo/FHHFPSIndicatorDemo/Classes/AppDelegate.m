@@ -11,7 +11,6 @@
 
 #if defined(DEBUG) || defined(_DEBUG)
 #import "FHHFPSIndicator.h"
-#import "UIWindow+FHH.h"
 #endif
 
 
@@ -28,6 +27,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
     
+    // add the follwing code after the window become keywindow
     #if defined(DEBUG) || defined(_DEBUG)
         [[FHHFPSIndicator sharedFPSIndicator] show];
 //        [FHHFPSIndicator sharedFPSIndicator].fpsLabelPosition = FPSIndicatorPositionTopRight;
