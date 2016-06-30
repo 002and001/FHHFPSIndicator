@@ -78,7 +78,7 @@
 }
 
 /**
- you can change the fpsLabel style for your app in this function
+ You can change the fpsLabel style for your app in this function
  */
 - (void)configFPSLabel {
     _fpsLabel.font = [UIFont boldSystemFontOfSize:FONT_SIZE_fpsLabel];
@@ -107,9 +107,10 @@
 
 - (void)show {
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    for (UIView *label in keyWindow.subviews) {
-        if ([label isKindOfClass:[UILabel class]]&& label.tag == TAG_fpsLabel) {
-            return;
+    for (NSUInteger i = 0; i < keyWindow.subviews.count; ++i) {
+        UIView *view = keyWindow.subviews[keyWindow.subviews.count - 1 - i];
+        if ([view isKindOfClass:[UILabel class]] && view.tag == TAG_fpsLabel) {        
+                return;
         }
     }
     [_displayLink setPaused:NO];

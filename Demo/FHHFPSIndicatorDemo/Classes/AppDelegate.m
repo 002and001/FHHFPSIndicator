@@ -27,7 +27,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
     
-    // add the follwing code after the window become keywindow
+    // Add the follwing code after the window become keywindow
     #if defined(DEBUG) || defined(_DEBUG)
         [[FHHFPSIndicator sharedFPSIndicator] show];
 //        [FHHFPSIndicator sharedFPSIndicator].fpsLabelPosition = FPSIndicatorPositionTopRight;

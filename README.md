@@ -33,7 +33,7 @@ Installation
 2. Import the main header file：`#import "FHHFPSIndicator.h"`
 
 ###Instruction
-you shoud call `[FHHFPSIndicator sharedFPSIndicator] show]` after the keyWindw becomes keyAndVisible;【在[window makeKeyAndVisible]之后调用`[FHHFPSIndicator sharedFPSIndicator]`】
+you shoud call 	 after the keyWindw becomes keyAndVisible;
 
 Advice:Use FHHFPSIndicator in DEBUG mode
 
@@ -71,7 +71,7 @@ FHHFPSIndicator is provided under the MIT license. See LICENSE file for details.
 ---
 中文介绍
 ==============
-FHHFPSIndicator 可以显示当前画面的FPS.
+FHHFPSIndicator可以用于在iOS开发中显示当前画面的FPS.
 
 演示项目
 ==============
