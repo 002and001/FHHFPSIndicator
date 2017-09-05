@@ -15,13 +15,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:201 / 255.0 green:201 / 255.0 blue:201 / 255.0 alpha:1.0];
+    self.view.backgroundColor = RGBColor(201, 201, 201);
         
-    [self setNavigationBarItem:@"Home" leftButtonIcon:nil rightButtonTitle:@"next"];
-    [self.rightButton addTarget:self action:@selector(rightButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self setNavigationBarTitle:@"Home" navLeftButtonIcon:nil navRightButtonTitle:@"next"];
+    [self.navRightButton addTarget:self action:@selector(p_rightButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)rightButtonDidClick:(UIButton *)btn {
+- (void)p_rightButtonDidClick:(UIButton *)btn {
     [self.navigationController pushViewController:[[SubHomeViewController alloc] init] animated:YES];
 }
 

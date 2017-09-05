@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface UIViewController (CustomNavigationBar)
 
-@property(nonatomic,strong) UIView *navigationBar;  // 自定义navigationBar
-@property(nonatomic,strong) UIButton *middleButton; // 中间按钮
-@property(nonatomic,strong) UIButton *leftButton;   // 左边按钮
-@property(nonatomic,strong) UIButton *rightButton;  // 右边按钮
+@property (nonatomic, strong) UIView *navigationBar;  // 自定义navigationBar
+@property (nonatomic, strong) UIButton *navMiddleButton; // 中间按钮
+@property (nonatomic, strong) UIButton *navLeftButton;   // 左边按钮
+@property (nonatomic, strong) UIButton *navRightButton;  // 右边按钮
+@property (nonatomic, assign) BOOL isPushed;  // 是否push进来
 
 /**
  
@@ -22,50 +22,68 @@
  
  @param title 导航栏标题
  */
-- (void)setNavigationBarItem:(NSString *)title;
+- (void)setNavigationBarTitle:(NSString *)title;
 
 /**
  
  有 ‘标题’ 和 ‘左边按钮’
  
- @param title           导航栏标题
- @param leftButtonIcon  左边按钮的 ‘图片’ 名称
+ @param title               导航栏标题
+ @param navLeftButtonIcon   左边按钮的 ‘图片’ 名称
  */
-- (void)setNavigationBarItem:(NSString *)title leftButtonIcon:(NSString *)leftButtonIcon;
+- (void)setNavigationBarTitle:(NSString *)title navLeftButtonIcon:(NSString *)navLeftButtonIcon;
 
 /**
  
  有 ‘标题’ 和 ‘左边按钮’ 和 ‘右边按钮’（显示为文字）
  
- @param title                导航栏标题
- @param leftButtonIcon       左边按钮的 ‘图片’ 名称
- @param rightButtonTitle     右边按钮的 ‘title’ 名称
+ @param title                   导航栏标题
+ @param navLeftButtonIcon       左边按钮的 ‘图片’ 名称
+ @param navRightButtonTitle     右边按钮的 ‘title’ 名称
  */
-- (void)setNavigationBarItem:(NSString *)title leftButtonIcon:(NSString *)leftButtonIcon  rightButtonTitle:(NSString *)rightButtonTitle;
+- (void)setNavigationBarTitle:(NSString *)title
+            navLeftButtonIcon:(NSString *)navLeftButtonIcon
+          navRightButtonTitle:(NSString *)navRightButtonTitle;
 
 /**
  
  有 ‘标题’ 和 ‘左边按钮’ 和 ‘右边按钮’（显示图片）
  
  @param title                导航栏标题
- @param leftButtonIcon       左边按钮的 ‘图片’ 名称
- @param rightButtonIcon      右边按钮的 ‘title’ 名称
+ @param navLeftButtonIcon       左边按钮的 ‘图片’ 名称
+ @param navRightButtonIcon      右边按钮的 ‘title’ 名称
  */
-- (void)setNavigationBarItem:(NSString *)title leftButtonIcon:(NSString *)leftButtonIcon rightButtonIcon:(NSString *)rightButtonIcon;
+- (void)setNavigationBarTitle:(NSString *)title
+            navLeftButtonIcon:(NSString *)navLeftButtonIcon
+           navRightButtonIcon:(NSString *)navRightButtonIcon;
 
 /**
  有 ‘标题’ 和 ‘左边按钮’ 和 ‘右边按钮’（包含图片和文字）
  
- @param title                导航栏标题
- @param leftButtonIcon       左边按钮的 ‘图片’ 名称
- @param rightButtonIcon      右边按钮的 ‘title’ 名称
- @param rightButtonTitle     右边按钮的 ‘图片’ 名称
+ @param title                   导航栏标题
+ @param navLeftButtonIcon       左边按钮的 ‘图片’ 名称
+ @param navRightButtonIcon      右边按钮的 ‘title’ 名称
+ @param navRightButtonTitle     右边按钮的 ‘图片’ 名称
  */
-- (void)setNavigationBarItem:(NSString *)title leftButtonIcon:(NSString *)leftButtonIcon rightButtonIcon:(NSString *)rightButtonIcon rightButtonTitle:(NSString *)rightButtonTitle;
+- (void)setNavigationBarTitle:(NSString *)title
+            navLeftButtonIcon:(NSString *)navLeftButtonIcon
+           navRightButtonIcon:(NSString *)navRightButtonIcon
+          navRightButtonTitle:(NSString *)navRightButtonTitle;
+
 
 /**
- pop当前控制器
+ 删除左边按钮默认返回事件
  */
-- (void)clickLeftNavButton;
+- (void)removeNavLeftButtonDefaultEvent;
+
+/**
+ 中间按钮重新布局
+ */
+- (void)reConfigNavMiddleButton;
+
+/**
+ 右边按钮重新布局
+ */
+- (void)reConfigNavRightButton;
 
 @end

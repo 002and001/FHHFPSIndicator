@@ -1,0 +1,12 @@
+//
+//  PrefixHeader.pch
+//  FHHFPSIndicatorDemo
+//
+//  Created by hefanghui on 2017/9/5.
+//  Copyright © 2017年 002. All rights reserved.
+//
+
+#import "Commom.h"
+#import "CommonFont.h"
+#import "CommonColor.h"
+#import "CommonPadding.h"

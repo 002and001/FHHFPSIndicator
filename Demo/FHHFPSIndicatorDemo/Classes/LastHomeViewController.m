@@ -16,10 +16,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:255 / 255.0 green:139 / 255.0 blue:57 / 255.0 alpha:1.0];    
+    self.view.backgroundColor = kColorC4_1;
     
-    [self setNavigationBarItem:@"LastHome" leftButtonIcon:@"backupIcon" rightButtonTitle:@"next"];    
-    [self.rightButton addTarget:self action:@selector(rightButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self setNavigationBarTitle:@"LastHome" navLeftButtonIcon:@"backupIcon" navRightButtonTitle:@"next"];
+    [self.navRightButton addTarget:self action:@selector(p_rightButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [FHHFPSIndicator sharedFPSIndicator].fpsLabelPosition = FPSIndicatorPositionTopRight;
 }
@@ -29,7 +29,7 @@
     [FHHFPSIndicator sharedFPSIndicator].fpsLabelPosition = FPSIndicatorPositionBottomCenter;
 }
 
-- (void)rightButtonDidClick:(UIButton *)btn {
+- (void)p_rightButtonDidClick:(UIButton *)btn {
     [self.navigationController pushViewController:[[WildernessViewController alloc] init] animated:YES];
 }
 

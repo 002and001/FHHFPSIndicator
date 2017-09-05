@@ -1,175 +1,285 @@
 //
+//  ************************************************************************
+//
 //  UIViewController+CustomNavigationBar.m
 //  LoveTourGuide
 //
-//  Created by 002 on 16/1/5.
-//  Copyright © 2016年 fhhe. All rights reserved.
+//  Created by 002 on 2017/7/26.
+//  Copyright © 2017年 hqyxedu. All rights reserved.
 //
+//  Main function:自定义导航栏控制器分类
+//
+//  Other specifications:
+//
+//  ************************************************************************
 
 #import "UIViewController+CustomNavigationBar.h"
 #import "UIView+FHH.h"
 #import <objc/runtime.h>
 
-#define FONT_SIZE_30D   15
-#define FONT_SIZE_28D   14
-#define WIDTH_LEFTBUTTON 44 // 左边按钮的宽高
-#define HEIGHT_STATUSBAR 20 // 状态栏高度
-#define HEIGHT_NAVIGATIONBAR 64 // 自定义导航栏高度
-#define CENTERY_VIEW (HEIGHT_STATUSBAR + (HEIGHT_NAVIGATIONBAR - HEIGHT_STATUSBAR) / 2) // 产品要求按钮布局的垂直中心点
-#define PADDING_RIGHT_RIGHTBUTTON 12 // 右边按钮距离屏幕距离
 #define RGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 #define KColorBlue RGBColor(0, 160, 233)
 #define ScreenWidth ([[UIScreen mainScreen] bounds].size.width)
 
-const char *NavigationBarType = "navigationBar";
-const char *MiddleButtonType = "middleButton";
-const char *LeftButtonType = "leftButton";
-const char *RightButtonType = "rightButton";
+const char *NavigationBarKey = "navigationBar";
+const char *NavMiddleButtonKey = "navMiddleButton";
+const char *NavLeftButtonKey = "navLeftButton";
+const char *NavRightButtonKey = "navRightButton";
+const char *IsPushedKey = "IsPushed";
 
 @implementation UIViewController (CustomNavigationBar)
 
 #pragma mark - 导航栏
-- (void)setNavigationBarItem:(NSString *)title {
-    
-    [self setNavigationBarItem:title leftButtonIcon:nil rightButtonIcon:nil rightButtonTitle:nil];
+- (void)setNavigationBarTitle:(NSString *)title {
+    [self setNavigationBarTitle:title
+              navLeftButtonIcon:nil
+             navRightButtonIcon:nil
+            navRightButtonTitle:nil];
+    self.navLeftButton.hidden = YES;
 }
 
-- (void)setNavigationBarItem:(NSString *)title leftButtonIcon:(NSString *)leftButtonIcon {
-    
-    [self setNavigationBarItem:title leftButtonIcon:leftButtonIcon rightButtonIcon:nil rightButtonTitle:nil];
+- (void)setNavigationBarTitle:(NSString *)title navLeftButtonIcon:(NSString *)navLeftButtonIcon {
+    [self setNavigationBarTitle:title
+              navLeftButtonIcon:navLeftButtonIcon
+             navRightButtonIcon:nil
+            navRightButtonTitle:nil];
 }
 
-- (void)setNavigationBarItem:(NSString *)title leftButtonIcon:(NSString *)leftButtonIcon  rightButtonTitle:(NSString *)rightButtonTitle {
+- (void)setNavigationBarTitle:(NSString *)title
+            navLeftButtonIcon:(NSString *)navLeftButtonIcon
+          navRightButtonTitle:(NSString *)navRightButtonTitle {
     
-    [self setNavigationBarItem:title leftButtonIcon:leftButtonIcon rightButtonIcon:nil rightButtonTitle:rightButtonTitle];
+    [self setNavigationBarTitle:title
+              navLeftButtonIcon:navLeftButtonIcon
+             navRightButtonIcon:nil
+            navRightButtonTitle:navRightButtonTitle];
 }
 
-- (void)setNavigationBarItem:(NSString *)title leftButtonIcon:(NSString *)leftButtonIcon rightButtonIcon:(NSString *)rightButtonIcon {
+- (void)setNavigationBarTitle:(NSString *)title
+            navLeftButtonIcon:(NSString *)navLeftButtonIcon
+           navRightButtonIcon:(NSString *)navRightButtonIcon {
     
-    [self setNavigationBarItem:title leftButtonIcon:leftButtonIcon rightButtonIcon:rightButtonIcon rightButtonTitle:nil];
+    [self setNavigationBarTitle:title
+              navLeftButtonIcon:navLeftButtonIcon
+             navRightButtonIcon:navRightButtonIcon
+            navRightButtonTitle:nil];
 }
 
-- (void)setNavigationBarItem:(NSString *)title leftButtonIcon:(NSString *)leftButtonIcon rightButtonIcon:(NSString *)rightButtonIcon rightButtonTitle:(NSString *)rightButtonTitle {
-    
+- (void)setNavigationBarTitle:(NSString *)title
+            navLeftButtonIcon:(NSString *)navLeftButtonIcon
+           navRightButtonIcon:(NSString *)navRightButtonIcon
+          navRightButtonTitle:(NSString *)navRightButtonTitle {
+    [self pc_configCustomNavigationBar];
+    [self pc_configCustomNavLeftButtonWithNavLeftButtonIcon:navLeftButtonIcon];
+    [self pc_configCustomNavRightButtonWithNavRightButtonIcon:navRightButtonIcon
+                                          navRightButtonTitle:navRightButtonTitle];
+    [self pc_configCustomNavMiddleButtonWithTitle:title];
+    [self pc_configBottomSepImageView];
+}
+
+- (void)pc_configCustomNavigationBar {
     if (self.navigationController.navigationBar != nil) {
         [self.navigationController.navigationBar removeFromSuperview];
     }
-    
     if (self.navigationBar != nil) {
         [self.navigationBar removeFromSuperview];
     }
+    self.isPushed = YES;
     // 1.自定义UIView代替导航栏
     // 1.1) 创建并定义属性
     self.navigationBar = [[UIView alloc] init];
-    self.navigationBar.frame = CGRectMake(0, 0, ScreenWidth, HEIGHT_NAVIGATIONBAR);
-    self.navigationBar.backgroundColor = KColorBlue;
-    // 1.2) 添加到当前view
+    self.navigationBar.frame = CGRectMake(0, 0, ScreenWidth, 64.0);
+    self.navigationBar.backgroundColor = RGBColor(0, 160, 233);
     [self.view addSubview:self.navigationBar];
-    
+}
+
+- (void)pc_configCustomNavLeftButtonWithNavLeftButtonIcon:(NSString *)NavLeftButtonIcon {
     // 2.‘左边’ 按钮
-    if (leftButtonIcon && ![@"" isEqualToString:leftButtonIcon]) {
-        self.leftButton = [[UIButton alloc] init];
-
-        [self.leftButton addTarget:self action:@selector(clickLeftNavButton) forControlEvents:UIControlEventTouchUpInside];
-        [self.leftButton setImage:[UIImage imageNamed:leftButtonIcon] forState:UIControlStateNormal];
-        [self.leftButton sizeToFit];
-
-        // 先设置宽高然后设置位置
-        self.leftButton.width = WIDTH_LEFTBUTTON;
-        self.leftButton.height = WIDTH_LEFTBUTTON;
-        self.leftButton.x = self.view.x;
-        self.leftButton.centerY = CENTERY_VIEW;
-        
-        [self.navigationBar addSubview:self.leftButton];
+    self.navLeftButton = [[UIButton alloc] init];
+    self.navLeftButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    if (!NavLeftButtonIcon || [@"" isEqualToString:NavLeftButtonIcon]) {
+        NavLeftButtonIcon = @"nav_return";
+        self.navLeftButton.hidden = YES;
     }
-    
-    // 3.‘右边’ 按钮
-    if (rightButtonIcon || rightButtonTitle) {
-        self.rightButton = [[UIButton alloc] init];
-        
-        if (rightButtonTitle && ![@"" isEqualToString:rightButtonTitle]) {
-            [self.rightButton setTitle:rightButtonTitle forState:UIControlStateNormal];
-        }
-        if (rightButtonIcon && ![@"" isEqualToString:rightButtonIcon]) {
-            [self.rightButton setImage:[UIImage imageNamed:rightButtonIcon] forState:UIControlStateNormal];
-        }
-        self.rightButton.titleLabel.font = [UIFont systemFontOfSize:FONT_SIZE_30D];
-//        self.rightButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
-        [self.rightButton sizeToFit];
-        [self.navigationBar addSubview:self.rightButton];
+    [self.navLeftButton addTarget:self action:@selector(clickLeftNavButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.navLeftButton setImage:[UIImage imageNamed:NavLeftButtonIcon] forState:UIControlStateNormal];
+    [self configLeftButton];
+    [self p_configLeftButtonEdgeInsets];
+}
 
-        self.rightButton.height = 44;
-        if (self.rightButton.width < 40) {
-            self.rightButton.width = 40;
+- (void)pc_configCustomNavRightButtonWithNavRightButtonIcon:(NSString *)NavRightButtonIcon
+                                        navRightButtonTitle:(NSString *)navRightButtonTitle {
+    if (NavRightButtonIcon || navRightButtonTitle) {
+        self.navRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.navRightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        if (navRightButtonTitle && ![@"" isEqualToString:navRightButtonTitle]) {
+            [self.navRightButton setTitle:navRightButtonTitle forState:UIControlStateNormal];
         }
-        self.rightButton.centerY = CENTERY_VIEW;
-        self.rightButton.right = self.navigationBar.right - 12;
-
+        if (NavRightButtonIcon && ![@"" isEqualToString:NavRightButtonIcon]) {
+            [self.navRightButton setImage:[UIImage imageNamed:NavRightButtonIcon] forState:UIControlStateNormal];
+        }
+        self.navRightButton.titleLabel.font = [UIFont systemFontOfSize:T5_30PX];
+        [self.navRightButton setTitleColor:kColorC4_1 forState:UIControlStateNormal];
+        [self.navigationBar addSubview:self.navRightButton];
+        [self reConfigNavRightButton];
+        [self p_configRightButtonEdgeInsets];
     }
-    
-    // 4.‘标题’ 按钮
+}
+
+- (void)pc_configCustomNavMiddleButtonWithTitle:(NSString *)title {
     if (title && ![@"" isEqualToString:title]) {
-        self.middleButton = [[UIButton alloc] init];
-        [self.middleButton setTitle:title forState:UIControlStateNormal];
-        self.middleButton.titleLabel.font = [UIFont systemFontOfSize:19];
-        [self.middleButton sizeToFit];
-        self.middleButton.center = CGPointMake(self.navigationBar.centerX , CENTERY_VIEW);
-        
-        // 添加到当前view
-        [self.navigationBar addSubview:self.middleButton];
+        [self addBarMiddleButtonWithTitle:title];
     }
+}
+
+- (void)addBarMiddleButtonWithTitle:(NSString *)title {
+    self.navMiddleButton = [[UIButton alloc] init];
+    self.navMiddleButton.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    [self.navMiddleButton setTitle:title forState:UIControlStateNormal];
+    [self.navMiddleButton setTitleColor:kColorC4_1 forState:UIControlStateNormal];
+    self.navMiddleButton.titleLabel.font = [UIFont systemFontOfSize:T3_34PX];
+    [self reConfigNavMiddleButton];
     
-    // 隐藏导航栏
-//    self.navigationController.navigationBar.hidden = YES;
+    // 添加到当前view
+    [self.navigationBar addSubview:self.navMiddleButton];
+}
+
+- (void)pc_configBottomSepImageView {
+    CGRect frame = CGRectMake(0, self.navigationBar.height - 0.5, self.navigationBar.width, 0.5);
+    UIImageView *bottomSepImageView = [[UIImageView alloc] initWithFrame:frame];
+    [self.navigationBar addSubview:bottomSepImageView];
+    bottomSepImageView.backgroundColor = kColorC3_1;
+}
+
+- (void)configLeftButton {
+    [self.navLeftButton sizeToFit];
+    self.navLeftButton.frame = CGRectMake(0, 28 , 50, 64);
+    self.navLeftButton.bottom = self.navigationBar.height;
+    [self.navigationBar addSubview:self.navLeftButton];
+}
+
+- (void)p_configLeftButtonEdgeInsets {
+    self.navLeftButton.imageEdgeInsets = UIEdgeInsetsMake((50 - 30), S3_PAGE_PADDING_30PX, 0, 0);
+}
+
+- (void)p_configRightButtonEdgeInsets {
+    CGSize imageSize = self.navRightButton.imageView.size;
+    CGSize titleSize = self.navRightButton.titleLabel.size;
+    CGFloat imageLeftInset = (self.navRightButton.width - imageSize.width - MARGIN_COMMON);
+    CGFloat titleLeftInset = (self.navRightButton.width - titleSize.width - MARGIN_COMMON + 2);
+    
+    self.navRightButton.imageEdgeInsets = UIEdgeInsetsMake(0, imageLeftInset, 0, -imageLeftInset);
+    self.navRightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, titleLeftInset);
 }
 
 - (void)clickLeftNavButton {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.isPushed) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        if (self.navigationController != nil) {
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }
+}
+
+- (void)removeNavLeftButtonDefaultEvent {
+    [self.navLeftButton removeTarget:self
+                              action:@selector(clickLeftNavButton)
+                    forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)reConfigNavMiddleButton {
+    [self.navMiddleButton sizeToFit];
+    CGFloat maxWidth = self.navigationBar.width - 2 * PADDING_30PX;
+    if (self.navLeftButton != nil && self.navRightButton != nil) {
+        maxWidth = self.navRightButton.x - self.navLeftButton.right;
+    } else if (self.navLeftButton != nil) {
+        maxWidth = self.navigationBar.width - 2 * self.navLeftButton.right;
+    }
+    if (self.navMiddleButton.width > maxWidth) {
+        self.navMiddleButton.width = maxWidth;
+    }
+    self.navMiddleButton.center = CGPointMake(self.navigationBar.centerX ,
+                                              self.navLeftButton.centerY + 20 * 0.5);
+}
+
+- (void)reConfigNavRightButton {
+    if (self.navRightButton.currentBackgroundImage == nil) {
+        [self.navRightButton sizeToFit];
+        self.navRightButton.width = self.navRightButton.width + MARGIN_COMMON;
+        self.navRightButton.height = 44;
+        if (self.navRightButton.width < 40) {
+            self.navRightButton.width = 40;
+        }
+        
+        self.navRightButton.centerY = self.navLeftButton.centerY + (20 * 0.5);
+        self.navRightButton.right = self.navigationBar.right;
+    }
+    else {
+        self.navRightButton.centerY = self.navLeftButton.centerY + (20 * 0.5);
+        self.navRightButton.right = self.navigationBar.right - MARGIN_COMMON;
+    }
 }
 
 #pragma mark - 运行时添加实例变量
 - (void)setNavigationBar:(UIView *)navigationBar {
     objc_setAssociatedObject(self,
-                             NavigationBarType,
+                             NavigationBarKey,
                              navigationBar,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (UIView *)navigationBar {
-    return objc_getAssociatedObject(self, NavigationBarType);
+    return objc_getAssociatedObject(self, NavigationBarKey);
 }
 
-- (void)setMiddleButton:(UIButton *)middleButton {
+- (void)setNavMiddleButton:(UIButton *)navMiddleButton {
     objc_setAssociatedObject(self,
-                             MiddleButtonType,
-                             middleButton,
+                             NavMiddleButtonKey,
+                             navMiddleButton,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (UIButton *)middleButton {
-    return objc_getAssociatedObject(self, MiddleButtonType);
+- (UIButton *)navMiddleButton {
+    return objc_getAssociatedObject(self, NavMiddleButtonKey);
 }
 
-- (void)setLeftButton:(UIButton *)leftButton {
+- (void)setNavLeftButton:(UIButton *)navLeftButton {
     objc_setAssociatedObject(self,
-                             LeftButtonType,
-                             leftButton,
+                             NavLeftButtonKey,
+                             navLeftButton,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (UIButton *)leftButton {
-    return objc_getAssociatedObject(self, LeftButtonType);
+- (UIButton *)navLeftButton {
+    return objc_getAssociatedObject(self, NavLeftButtonKey);
 }
 
-- (void)setRightButton:(UIButton *)rightButton {
+- (void)setNavRightButton:(UIButton *)navRightButton {
     objc_setAssociatedObject(self,
-                             RightButtonType,
-                             rightButton,
+                             NavRightButtonKey,
+                             navRightButton,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (UIButton *)rightButton {
-    return objc_getAssociatedObject(self, RightButtonType);
+- (UIButton *)navRightButton {
+    return objc_getAssociatedObject(self, NavRightButtonKey);
+}
+
+- (void)setIsPushed:(BOOL)isPushed {
+    NSNumber *isPushedNumber = [NSNumber numberWithBool:isPushed];
+    objc_setAssociatedObject(self,
+                             IsPushedKey,
+                             isPushedNumber,
+                             OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (BOOL)isPushed {
+    NSNumber *isPushedInNumber = objc_getAssociatedObject(self, IsPushedKey);
+    bool isPushed = [isPushedInNumber boolValue];
+    return isPushed;
 }
 
 @end

@@ -12,26 +12,25 @@
 
 @interface WildernessViewController ()
 
-@property(nonatomic,strong) UITextView *textView;
+@property (nonatomic, strong) UITextView *textView;
 
 @end
-
 
 @implementation WildernessViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:246 / 255.0 green:246 / 255.0 blue:246 / 255.0 alpha:1.0];
+    self.view.backgroundColor = RGBColor(246, 246, 246);
     
-    [self setNavigationBarItem:@"Wilderness" leftButtonIcon:@"deleteButton"];
-    [self.leftButton removeTarget:self action:@selector(clickLeftNavButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.leftButton addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [self setNavigationBarTitle:@"Wilderness" navLeftButtonIcon:@"deleteButton"];
+    [self removeNavLeftButtonDefaultEvent];
+    [self.navLeftButton addTarget:self action:@selector(p_leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
-    [self setupUI];
+    [self p_setupUI];
 }
 
-- (void)setupUI {
+- (void)p_setupUI {
     [self.view addSubview:self.textView];
     
     self.textView.width = [UIScreen mainScreen].bounds.size.width;
@@ -40,7 +39,7 @@
     self.textView.y = 64 + 20;    
 }
 
-- (void)leftButtonClick {
+- (void)p_leftButtonClick {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

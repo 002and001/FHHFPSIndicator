@@ -53,7 +53,7 @@ typedef enum {
  
  @param color The color to be setted for fpsLabel.textColor. If nil,the default Color will be setted.
  */
-- (void)fpsLabelColor:(UIColor *)color;
+- (void)setFpsLabelColor:(UIColor *)color;
 
 /**
  Show fpsLabel at the top of keyWindow

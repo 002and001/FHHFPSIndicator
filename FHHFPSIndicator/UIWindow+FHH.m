@@ -8,17 +8,16 @@
 
 #import "UIWindow+FHH.h"
 
-#define TAG_fpsLabel 110213
+static NSInteger kFpsLabelTag = 110213;
 
 @implementation UIWindow (FHH)
 
 - (void)layoutSubviews {
-    
     [super layoutSubviews];
     
     for (NSUInteger i = 0; i < self.subviews.count; ++i) {
         UIView *view = self.subviews[self.subviews.count - 1 - i];
-        if ([view isKindOfClass:[UILabel class]] && view.tag == TAG_fpsLabel) {
+        if ([view isKindOfClass:[UILabel class]] && view.tag == kFpsLabelTag) {
             if (view == self.subviews.lastObject) {
                 return;
             }

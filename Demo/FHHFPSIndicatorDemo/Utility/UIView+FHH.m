@@ -10,68 +10,25 @@
 
 @implementation UIView (FHH)
 
-- (void)setX:(CGFloat)x
-{
-    self.frame = CGRectMake(x, self.y, self.width, self.height);
-}
-
-- (CGFloat)x
-{
-    return self.frame.origin.x;
-}
-
-- (void)setY:(CGFloat)y
-{
-    self.frame = CGRectMake(self.x, y, self.width, self.height);
-}
-
-- (CGFloat)y
-{
-    return self.frame.origin.y;
-}
-
-- (void)setWidth:(CGFloat)width
-{
-    self.frame = CGRectMake(self.x, self.y, width, self.height);
-}
-
-- (CGFloat)width
-{
-    return self.frame.size.width;
-}
-
-- (void)setHeight:(CGFloat)height
-{
-    self.frame = CGRectMake(self.x, self.y, self.width, height);
-}
-
-- (CGFloat)height
-{
-    return self.frame.size.height;
-}
-
-- (void)setOrigin:(CGPoint)origin
-{
+#pragma mark - Setter
+- (void)setX:(CGFloat)x {
     CGRect frame = self.frame;
-    frame.origin = origin;
+    frame.origin.x = x;
     self.frame = frame;
 }
 
-- (CGPoint)origin
-{
-    return self.frame.origin;
-}
-
-- (void)setSize:(CGSize)size
-{
+- (void)setY:(CGFloat)y {
     CGRect frame = self.frame;
-    frame.size = size;
+    frame.origin.y = y;
     self.frame = frame;
 }
 
-- (CGSize)size
-{
-    return self.frame.size;
+- (void)setRight:(CGFloat)right {
+    self.frame = CGRectMake(right - self.width, self.y, self.width, self.height);
+}
+
+- (void)setBottom:(CGFloat)bottom {
+    self.frame = CGRectMake(self.x, bottom - self.height, self.width, self.height);
 }
 
 - (void)setCenterX:(CGFloat)centerX{
@@ -80,55 +37,111 @@
     self.center = center;
 }
 
-- (CGFloat)centerX
-{
-    return self.center.x;
-}
-
 - (void)setCenterY:(CGFloat)centerY {
     CGPoint center = self.center;
     center.y = centerY;
     self.center = center;
 }
 
-- (CGFloat)centerY
-{
+- (void)setWidth:(CGFloat)width {
+    CGRect frame = self.frame;
+    frame.size.width = width;
+    self.frame = frame;
+}
+
+- (void)setHeight:(CGFloat)height {
+    CGRect frame = self.frame;
+    frame.size.height = height;
+    self.frame = frame;
+}
+
+- (void)setOrigin:(CGPoint)origin {
+    CGRect frame = self.frame;
+    frame.origin = origin;
+    self.frame = frame;
+}
+
+- (void)setSize:(CGSize)size {
+    CGRect tempFrame = self.frame;
+    tempFrame.size = size;
+    self.frame = tempFrame;
+}
+
+#pragma mark - Getter
+- (CGFloat)x {
+    return self.frame.origin.x;
+}
+
+- (CGFloat)y {
+    return self.frame.origin.y;
+}
+
+- (CGFloat)width {
+    return self.frame.size.width;
+}
+
+- (CGFloat)height {
+    return self.frame.size.height;
+}
+
+- (CGSize)size {
+    return self.frame.size;
+}
+
+- (CGPoint)origin {
+    return self.frame.origin;
+}
+
+- (CGFloat)centerX {
+    return self.center.x;
+}
+
+- (CGFloat)centerY {
     return self.center.y;
 }
 
-- (CGFloat)tail {
-    return self.y + self.height;
-}
-
-- (void)setTail:(CGFloat)tail {
-    self.frame = CGRectMake(self.x, tail - self.height, self.width, self.height);
-}
-
 - (CGFloat)bottom {
-    return self.tail;
-}
-
-- (void)setBottom:(CGFloat)bottom {
-    [self setTail:bottom];
+    return self.y + self.height;
 }
 
 - (CGFloat)right {
     return self.x + self.width;
 }
 
-- (void)setRight:(CGFloat)right {
-    self.frame = CGRectMake(right - self.width, self.y, self.width, self.height);
+#pragma mark - Functions
+- (CGRect)convertRectToView:(UIView *)view {
+    CGRect newFrame = [self convertRect:self.bounds toView:view];
+    return newFrame;
 }
 
-/**
- *  分隔线视图
- *
- *  @return
- */
-+ (instancetype)sepView {
-    UIView *v = [[UIView alloc] init];
-    v.backgroundColor = [UIColor lightGrayColor];
-    return v;
+- (CGFloat)xInView:(UIView *)view {
+    CGRect newFrame = [self convertRect:self.bounds toView:view];
+    return newFrame.origin.x;
+}
+
+- (CGFloat)yInView:(UIView *)view {
+    CGRect newFrame = [self convertRect:self.bounds toView:view];
+    return newFrame.origin.y;
+}
+
+- (CGFloat)rightInView:(UIView *)view {
+    CGRect newFrame = [self convertRect:self.bounds toView:view];
+    return newFrame.origin.x + newFrame.size.width;
+}
+
+- (CGFloat)bottomInView:(UIView *)view {
+    CGRect newFrame = [self convertRect:self.bounds toView:view];
+    return newFrame.origin.y + newFrame.size.height;
+}
+
+- (CGFloat)centerXInView:(UIView *)view {
+    CGRect newFrame = [self convertRect:self.bounds toView:view];
+    return newFrame.origin.x + newFrame.size.width * 0.5;
+}
+
+- (CGFloat)centerYInView:(UIView *)view {
+    CGRect newFrame = [self convertRect:self.bounds toView:view];
+    return newFrame.origin.y + newFrame.size.height * 0.5;
 }
 
 @end

@@ -22,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		257574D81F5E9D440069680F /* Commom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Commom.h; sourceTree = "<group>"; };
+		257574D91F5E9D510069680F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		257574DB1F5E9EF50069680F /* CommonFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonFont.h; sourceTree = "<group>"; };
+		257574DC1F5E9F120069680F /* CommonColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonColor.h; sourceTree = "<group>"; };
+		257574DD1F5EA0010069680F /* CommonPadding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonPadding.h; sourceTree = "<group>"; };
 		25C90C971D227566002F1B5E /* FHHFPSIndicatorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHHFPSIndicatorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C90C9B1D227566002F1B5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		25C90CA61D227566002F1B5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,6 +97,11 @@
 			isa = PBXGroup;
 			children = (
 				25C90C9B1D227566002F1B5E /* main.m */,
+				257574D81F5E9D440069680F /* Commom.h */,
+				257574D91F5E9D510069680F /* PrefixHeader.pch */,
+				257574DB1F5E9EF50069680F /* CommonFont.h */,
+				257574DC1F5E9F120069680F /* CommonColor.h */,
+				257574DD1F5EA0010069680F /* CommonPadding.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -320,6 +330,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = FHHFPSIndicatorDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = FHHFPSIndicatorDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -333,6 +345,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = FHHFPSIndicatorDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = FHHFPSIndicatorDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
