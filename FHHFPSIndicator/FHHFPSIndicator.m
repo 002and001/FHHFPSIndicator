@@ -34,7 +34,6 @@
 }
 
 @property (nonatomic, strong) UILabel *fpsLabel;
-@property (nonatomic, assign) BOOL isShowingFPS;
 
 @end
 

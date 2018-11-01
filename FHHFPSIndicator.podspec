@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.name         = 'FHHFPSIndicator'
   s.summary      = 'show FPS On keyWindow.'
-  s.version      = '1.0.1'
+  s.version      = '1.0.2'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.authors      = { '002and001' => 'xxewz1@163.com' }
   s.social_media_url = 'http://www.jianshu.com/users/d8d972561b59/timeline'
