@@ -67,4 +67,9 @@ typedef enum {
  */
 - (void)hide;
 
+/**
+ return ture if fpsLabel shown on the screen.otherwhise return false
+ */
+- (BOOL)isShowingFps;
+
 @end

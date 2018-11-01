@@ -34,6 +34,7 @@
 }
 
 @property (nonatomic, strong) UILabel *fpsLabel;
+@property (nonatomic, assign) BOOL isShowingFPS;
 
 @end
 
@@ -126,6 +127,13 @@
             return;
         }
     }
+}
+
+- (BOOL)isShowingFps {
+    if (_fpsLabel.superview != nil) {
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark - notification
